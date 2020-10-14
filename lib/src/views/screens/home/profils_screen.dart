@@ -5,7 +5,7 @@ class ProfilsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [Text("Chats")],
+        children: [Text("profis")],
       ),
     );
   }

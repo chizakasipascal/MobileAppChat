@@ -20,7 +20,6 @@ class _SplashChatState extends State<SplashChat> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [

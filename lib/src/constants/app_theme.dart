@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'font_family.dart';
 
 final ThemeData themeData = ThemeData(
-  backgroundColor: WhiteColor,
+  backgroundColor: BlackColor,
   visualDensity: VisualDensity.adaptivePlatformDensity,
-  primarySwatch: GeenWhithOpacity,
   primaryColor: GreenColor,
   accentColor: GeenWhithOpacity,
   cursorColor: BlackColor,
-  fontFamily: FontFamily.chata,
+  fontFamily: FontFamily.ubuntu,
   splashColor: GreenColor,
 );
 

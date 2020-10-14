@@ -1,5 +1,5 @@
 class FontFamily {
   FontFamily._();
 
-  static const String chata = "chata";
+  static const String ubuntu = "Ubuntu";
 }

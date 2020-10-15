@@ -1,7 +1,6 @@
 import 'package:MobileAppChat/src/views/screens/home/home_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'animation_screen.dart';
 
 class SplashChat extends StatefulWidget {

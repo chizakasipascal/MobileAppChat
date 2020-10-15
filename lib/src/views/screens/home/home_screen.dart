@@ -1,6 +1,6 @@
 import 'package:MobileAppChat/src/utils/colors.dart';
-import 'package:MobileAppChat/src/views/screens/home/Contacts_screen.dart';
 import 'package:MobileAppChat/src/views/screens/home/chat_screen.dart';
+import 'package:MobileAppChat/src/views/screens/home/Contacts_screen.dart';
 import 'package:MobileAppChat/src/views/screens/home/profils_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +13,7 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   TabController _controller;
   int _selectedIndex = 0;
-
+  bool selectionner = true;
   List<Widget> list = [
     Tab(text: "Chats"),
     Tab(text: "Contacts"),
@@ -23,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
+
     _controller = TabController(length: list.length, vsync: this);
     _controller.addListener(() {
       setState(() {
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen>
                 labelColor: GreeyColor,
                 labelStyle: TextStyle(color: GreeyColor, fontSize: 18),
                 onTap: (index) {
-                  // Tab index when user select it, it start from zero
+                  //
                 },
               ),
               title: Text(
@@ -59,13 +60,7 @@ class _HomeScreenState extends State<HomeScreen>
             ),
             body: TabBarView(
               controller: _controller,
-              children: [
-                Text(
-                  _selectedIndex.toString(),
-                ),
-                ContactScreen(),
-                ProfilsScreen()
-              ],
+              children: [ChatScreen(), ContactScreen(), ProfilsScreen()],
             ),
           ),
         ),

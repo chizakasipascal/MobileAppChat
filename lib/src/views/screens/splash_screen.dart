@@ -1,5 +1,5 @@
 import 'package:MobileAppChat/src/constants/routes.dart';
-
+import 'package:MobileAppChat/src/utils/colors.dart';
 import 'package:MobileAppChat/src/views/widgets/background.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +20,7 @@ class _SplashChatState extends State<SplashChat> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [

@@ -1,6 +1,10 @@
 import 'package:MobileAppChat/src/utils/colors.dart';
 import 'package:flutter/material.dart';
 
+import 'Contacts_screen.dart';
+import 'chat_screen.dart';
+import 'profils_screen.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -43,15 +47,9 @@ class _HomeScreenState extends State<HomeScreen> {
           },
           body: TabBarView(
             children: [
-              Center(
-                child: Text("1"),
-              ),
-              Center(
-                child: Text("2"),
-              ),
-              Center(
-                child: Text("3"),
-              ),
+              ChatScreen(),
+              ContactScreen(),
+              ProfilsScreen(),
             ],
           ),
         ),

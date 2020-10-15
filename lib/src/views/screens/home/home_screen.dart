@@ -1,75 +1,59 @@
 import 'package:MobileAppChat/src/utils/colors.dart';
-import 'package:MobileAppChat/src/views/screens/home/Contacts_screen.dart';
-import 'package:MobileAppChat/src/views/screens/home/chat_screen.dart';
-import 'package:MobileAppChat/src/views/screens/home/profils_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'Contacts_screen.dart';
+import 'chat_screen.dart';
+import 'profils_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
-  TabController _controller;
-  int _selectedIndex = 0;
-
-  List<Widget> list = [
-    Tab(text: "Chats"),
-    Tab(text: "Contacts"),
-    Tab(text: "Profils"),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = TabController(length: list.length, vsync: this);
-    _controller.addListener(() {
-      setState(() {
-        _selectedIndex = _controller.index;
-      });
-      print("Selected Index: " + _controller.index.toString());
-    });
-  }
-
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: DefaultTabController(
+      body: DefaultTabController(
         length: 3,
-        child: MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(
-              backgroundColor: WhiteColor,
-              bottom: TabBar(
-                controller: _controller,
-                tabs: list,
-                indicatorColor: RedColor,
-                labelColor: GreeyColor,
-                labelStyle: TextStyle(color: GreeyColor, fontSize: 18),
-                onTap: (index) {
-                  // Tab index when user select it, it start from zero
-                },
-              ),
-              title: Text(
-                'Connectis ',
-                style: TextStyle(color: RedColor),
-              ),
-            ),
-            body: TabBarView(
-              controller: _controller,
-              children: [
-                Text(
-                  _selectedIndex.toString(),
+        child: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                backgroundColor: WhiteColor,
+                expandedHeight: 200.0,
+                floating: false,
+                pinned: true,
+                flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  background: Container(
+                    child: Text("Pas d'insipiration"),
+                    //TODO:Sliver pas finis
+                  ),
                 ),
-                ContactScreen(),
-                ProfilsScreen()
-              ],
-            ),
+                bottom: TabBar(
+                  labelColor: RedColor,
+                  unselectedLabelColor: Colors.grey,
+                  indicatorColor: RedColor,
+                  labelStyle: TextStyle(fontSize: 18),
+                  tabs: [
+                    new Tab(text: "Chats"),
+                    new Tab(text: "Contacts"),
+                    new Tab(text: "Profils"),
+                  ],
+                ),
+              ),
+            ];
+          },
+          body: TabBarView(
+            children: [
+              ChatScreen(),
+              ContactScreen(),
+              ProfilsScreen(),
+            ],
           ),
         ),
-      )),
+      ),
     );
   }
 }

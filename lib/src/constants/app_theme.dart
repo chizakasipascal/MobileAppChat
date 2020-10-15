@@ -5,11 +5,11 @@ import 'font_family.dart';
 final ThemeData themeData = ThemeData(
   backgroundColor: BlackColor,
   visualDensity: VisualDensity.adaptivePlatformDensity,
-  primaryColor: GreenColor,
-  accentColor: GeenWhithOpacity,
+  primaryColor: RedColor,
+  accentColor: RedColor,
   cursorColor: BlackColor,
   fontFamily: FontFamily.ubuntu,
-  splashColor: GreenColor,
+  splashColor: GreeyColor.withOpacity(.4),
 );
 
 final TextTheme textTheme = TextTheme();

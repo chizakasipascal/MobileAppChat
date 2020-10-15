@@ -11,7 +11,7 @@ class ChatScreen extends StatelessWidget {
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: 80),
+            // SizedBox(height: 80),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(

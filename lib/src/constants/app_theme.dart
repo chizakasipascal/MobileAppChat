@@ -9,7 +9,7 @@ final ThemeData themeData = ThemeData(
   accentColor: RedColor,
   cursorColor: BlackColor,
   fontFamily: FontFamily.ubuntu,
-  splashColor: GreenColor,
+  splashColor: GreeyColor.withOpacity(.4),
 );
 
 final TextTheme textTheme = TextTheme();

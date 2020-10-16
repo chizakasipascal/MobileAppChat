@@ -1,3 +1,4 @@
+import 'package:MobileAppChat/src/constants/routes.dart';
 import 'package:MobileAppChat/src/models/message.dart';
 import 'package:MobileAppChat/src/models/message_list.dart';
 import 'package:MobileAppChat/src/utils/colors.dart';
@@ -26,10 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           SizedBox(height: 50),
           Padding(
-            padding: const EdgeInsets.only(top: 100),
+            padding: const EdgeInsets.only(top: 70),
             child: Container(
               child: messages.length > 0
                   ? ListView.builder(
+                      physics: BouncingScrollPhysics(),
                       itemCount: messages.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
@@ -129,37 +131,13 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       ),
-      bottomNavigationBar: GestureDetector(
-        onTap: () {
-          print("New message");
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.pushNamed(context, Routes.conversation);
         },
-        child: Container(
-          width: size.width,
-          height: 70,
-          decoration: BoxDecoration(
-            color: RedColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(20),
-              topRight: Radius.circular(20),
-            ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.message,
-                color: WhiteColor,
-              ),
-              SizedBox(width: 5),
-              Text(
-                "Creer une nouvelle conversation",
-                style: TextStyle(
-                  color: WhiteColor,
-                  fontSize: 18.0,
-                ),
-              ),
-            ],
-          ),
+        child: Icon(
+          Icons.message,
+          color: WhiteColor,
         ),
       ),
     );

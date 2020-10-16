@@ -14,47 +14,65 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: DefaultTabController(
-          length: 3,
-          child: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverAppBar(
-                  backgroundColor: WhiteColor,
-                  expandedHeight: 200.0,
-                  floating: false,
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    background: Container(
-                      child: Center(child: Text("Pas d'insipiration")),
-                      //TODO:Sliver pas finis
-                    ),
-                  ),
-                  bottom: TabBar(
-                    labelColor: RedColor,
-                    unselectedLabelColor: Colors.grey,
-                    indicatorColor: RedColor,
-                    labelStyle: TextStyle(fontSize: 18),
-                    tabs: [
-                      new Tab(text: "Chats"),
-                      new Tab(text: "Contacts"),
-                      new Tab(text: "Profils"),
-                    ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            SizedBox(height: 50),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
+                Text(
+                  "MESSAGES",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.w800,
+                    color: BlackColor,
                   ),
                 ),
-              ];
-            },
-            body: TabBarView(
-              children: [
-                ChatScreen(),
-                ContactScreen(),
-                ProfilsScreen(),
+                CircleAvatar()
               ],
             ),
-          ),
+            ListTile(
+                leading: CircleAvatar(),
+                title: Text(
+                  "Pascal Kasi",
+                  style: TextStyle(
+                    color: BlackColor,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                subtitle: Text(
+                  " Library that provides interfaces and corresponding wrapper for system classes to allow faking them",
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: GreeyColor,
+                    fontSize: 14.0,
+                  ),
+                ),
+                trailing: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      height: 10.0,
+                      width: 10.0,
+                      decoration: BoxDecoration(
+                          color: GreenColor, shape: BoxShape.circle),
+                    ),
+                    SizedBox(height: 2),
+                    Text(
+                      "10:28",
+                      style: TextStyle(
+                        color: GreeyColor,
+                        fontSize: 13.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )
+                  ],
+                )),
+          ],
         ),
       ),
     );

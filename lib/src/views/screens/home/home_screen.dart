@@ -1,9 +1,10 @@
+import 'package:MobileAppChat/src/models/message.dart';
+import 'package:MobileAppChat/src/models/message_list.dart';
 import 'package:MobileAppChat/src/utils/colors.dart';
+import 'package:MobileAppChat/src/views/widgets/app_chat_bart.dart';
+import 'package:MobileAppChat/src/views/widgets/message_widget.dart';
 import 'package:flutter/material.dart';
-
-import 'Contacts_screen.dart';
-import 'chat_screen.dart';
-import 'profils_screen.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -11,69 +12,70 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final List<Message> messages = MessageList.getMessages();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(height: 50),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(icon: Icon(Icons.arrow_back), onPressed: () {}),
-                Text(
-                  "MESSAGES",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w800,
-                    color: BlackColor,
-                  ),
-                ),
-                CircleAvatar()
-              ],
-            ),
-            ListTile(
-                leading: CircleAvatar(),
-                title: Text(
-                  "Pascal Kasi",
-                  style: TextStyle(
-                    color: BlackColor,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                subtitle: Text(
-                  " Library that provides interfaces and corresponding wrapper for system classes to allow faking them",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: GreeyColor,
-                    fontSize: 14.0,
-                  ),
-                ),
-                trailing: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 10.0,
-                      width: 10.0,
-                      decoration: BoxDecoration(
-                          color: GreenColor, shape: BoxShape.circle),
-                    ),
-                    SizedBox(height: 2),
-                    Text(
-                      "10:28",
-                      style: TextStyle(
-                        color: GreeyColor,
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+      body: Stack(
+        children: [
+          Positioned(
+            top: 50,
+            child: AppChatBar(),
+          ),
+          SizedBox(height: 50),
+          Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: Container(
+              child: messages.length > 0
+                  ? ListView.builder(
+                      itemCount: messages.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Dismissible(
+                            onDismissed: (DismissDirection direction) {
+                              setState(() {
+                                messages.removeAt(index);
+                              });
+                            },
+                            secondaryBackground: Container(
+                              child: Center(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'Supprimer',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                    SizedBox(width: 10),
+                                    Icon(
+                                      Icons.delete,
+                                      color: WhiteColor,
+                                    ),
+                                    SizedBox(width: 10),
+                                  ],
+                                ),
+                              ),
+                              color: Colors.red,
+                            ),
+                            background: Container(),
+                            key: UniqueKey(),
+                            direction: DismissDirection.endToStart,
+                            child: MessagWidget(
+                              message: messages[index],
+                            ),
+                          ),
+                        );
+                      },
                     )
-                  ],
-                )),
-          ],
-        ),
+                  : Center(
+                      child: SvgPicture.asset("assets/images/empty.svg"),
+                    ),
+            ),
+          )
+        ],
       ),
     );
   }

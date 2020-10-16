@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'font_family.dart';
 
 final ThemeData themeData = ThemeData(
-  backgroundColor: BlackColor,
+  backgroundColor: WhiteColor.withOpacity(.4),
   visualDensity: VisualDensity.adaptivePlatformDensity,
   primaryColor: RedColor,
   accentColor: RedColor,

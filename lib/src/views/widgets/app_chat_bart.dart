@@ -25,7 +25,9 @@ class AppChatBar extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(right: 4),
-            child: CircleAvatar(),
+            child: CircleAvatar(
+              backgroundColor: RedColor,
+            ),
           ),
         ],
       ),

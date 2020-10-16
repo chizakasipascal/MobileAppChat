@@ -2,9 +2,9 @@ import 'package:MobileAppChat/src/models/message.dart';
 import 'package:MobileAppChat/src/models/message_list.dart';
 import 'package:MobileAppChat/src/utils/colors.dart';
 import 'package:MobileAppChat/src/views/widgets/app_chat_bart.dart';
+import 'package:MobileAppChat/src/views/widgets/background.dart';
 import 'package:MobileAppChat/src/views/widgets/message_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Stack(
         children: [
@@ -71,11 +72,95 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                     )
                   : Center(
-                      child: SvgPicture.asset("assets/images/empty.svg"),
+                      child: Stack(
+                        overflow: Overflow.visible,
+                        children: [
+                          Container(
+                            height: 200,
+                            width: 380,
+                            decoration: BoxDecoration(
+                              color: WhiteColor,
+                              borderRadius: BorderRadius.circular(40),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  width: 150,
+                                  height: 150,
+                                  child: Backgroung(),
+                                ),
+                                SizedBox(height: 10),
+                                Text(
+                                  "Votre des réceptions est vidées",
+                                  style: TextStyle(
+                                    color: BlackColor,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            top: -30,
+                            left: 20,
+                            child: Container(
+                              height: 100,
+                              width: 100,
+                              decoration: BoxDecoration(
+                                  color: WhiteColor, shape: BoxShape.circle),
+                              child: Container(
+                                height: 100,
+                                width: 100,
+                                margin: EdgeInsets.all(5),
+                                decoration:
+                                    BoxDecoration(shape: BoxShape.circle),
+                                child: Image.asset(
+                                  "assets/icon/logo.png",
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
             ),
           )
         ],
+      ),
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          print("New message");
+        },
+        child: Container(
+          width: size.width,
+          height: 70,
+          decoration: BoxDecoration(
+            color: RedColor,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.message,
+                color: WhiteColor,
+              ),
+              SizedBox(width: 5),
+              Text(
+                "Creer une nouvelle conversation",
+                style: TextStyle(
+                  color: WhiteColor,
+                  fontSize: 18.0,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

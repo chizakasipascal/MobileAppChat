@@ -18,7 +18,9 @@ class MessagWidget extends StatelessWidget {
       onLongPress: () {
         // do something else
       },
-      leading: CircleAvatar(),
+      leading: CircleAvatar(
+        backgroundColor: RedColor,
+      ),
       title: Text(
         message.name,
         style: TextStyle(

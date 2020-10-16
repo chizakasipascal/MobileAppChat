@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ChatsScreen extends StatelessWidget {
+class Conversation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [Text("Chats")],
+      body: SafeArea(
+        child: Column(
+          children: [],
+        ),
       ),
     );
   }

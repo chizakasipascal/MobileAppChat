@@ -5,9 +5,10 @@ class Routes {
   Routes._();
 
   static const String home = '/home';
-  static const String ressource = '/ressource';
+  static const String conversation = '/conversation';
 
   static final routes = <String, WidgetBuilder>{
     home: (BuildContext context) => HomeScreen(),
+    conversation: (BuildContext context) => Conversation(),
   };
 }

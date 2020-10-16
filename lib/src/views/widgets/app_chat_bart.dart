@@ -1,4 +1,5 @@
 import 'package:MobileAppChat/src/utils/colors.dart';
+import 'package:bubble_showcase/bubble_showcase.dart';
 import 'package:flutter/material.dart';
 
 class AppChatBar extends StatelessWidget {
@@ -25,8 +26,11 @@ class AppChatBar extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(right: 4),
-            child: CircleAvatar(
-              backgroundColor: RedColor,
+            child: InkWell(
+              onTap: () {},
+              child: CircleAvatar(
+                backgroundColor: RedColor,
+              ),
             ),
           ),
         ],

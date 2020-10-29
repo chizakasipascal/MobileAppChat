@@ -5,6 +5,7 @@ import 'font_family.dart';
 final ThemeData themeData = ThemeData(
   backgroundColor: WhiteColor.withOpacity(.4),
   visualDensity: VisualDensity.adaptivePlatformDensity,
+  scaffoldBackgroundColor: WhiteColor,
   primaryColor: RedColor,
   accentColor: RedColor,
   cursorColor: BlackColor,

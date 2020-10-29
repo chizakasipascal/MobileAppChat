@@ -20,6 +20,7 @@ class MessagWidget extends StatelessWidget {
       },
       leading: CircleAvatar(
         backgroundColor: RedColor,
+        child: Placeholder(),
       ),
       title: Text(
         message.name,

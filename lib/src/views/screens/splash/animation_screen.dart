@@ -77,10 +77,11 @@ class _AnimationScreenState extends State<AnimationScreen>
                   children: [
                     SizedBox(
                       height: 80,
-                      child: Image.asset("assets/icon/logo.png"),
+                      // child: Image.asset("assets/icon/logo.png"),
+                      child: Placeholder(),
                     ),
                     Text(
-                      'Connectis',
+                      'XXXXXXXXXX',
                       style: TextStyle(color: WhiteColor, fontSize: 25),
                     ),
                   ],
